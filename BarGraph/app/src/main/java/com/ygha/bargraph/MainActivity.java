@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         //l.setTypeface(tfLight);
         l.setYOffset(0f);
         l.setXOffset(20f);
-        l.setYEntrySpace(0f);
-        l.setTextSize(20f);
-        l.setFormSize(20f);
+        l.setYEntrySpace(20f);
+        l.setTextSize(30f);
+        l.setFormSize(40f);
 
         XAxis xAxis = chart.getXAxis();
         //xAxis.setTypeface(null);
