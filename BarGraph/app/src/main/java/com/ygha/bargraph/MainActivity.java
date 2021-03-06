@@ -78,15 +78,17 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         seekBarY.setProgress(100);
 
         Legend l = chart.getLegend();
+        //l.setTextSize(50);
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(true);
         //l.setTypeface(tfLight);
         l.setYOffset(0f);
-        l.setXOffset(10f);
+        l.setXOffset(20f);
         l.setYEntrySpace(0f);
-        l.setTextSize(8f);
+        l.setTextSize(20f);
+        l.setFormSize(20f);
 
         XAxis xAxis = chart.getXAxis();
         //xAxis.setTypeface(null);

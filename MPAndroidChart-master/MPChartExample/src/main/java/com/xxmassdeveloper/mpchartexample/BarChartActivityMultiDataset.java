@@ -48,7 +48,7 @@ public class BarChartActivityMultiDataset extends DemoBase implements OnSeekBarC
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_barchart);
+        setContentView(R.layout.activity_multibar_main);
 
         setTitle("BarChartActivityMultiDataset");
 
