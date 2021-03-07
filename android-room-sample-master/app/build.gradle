@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "language", "dagger"
+    productFlavors {
+        java {
+            dimension "language"
+            applicationIdSuffix ".java"
+        }
+        kotlin {
+            dimension "language"
+            applicationIdSuffix ".kotlin"
+        }
+        basic {
+            dimension "dagger"
+        }
+        dagger {
+            dimension "dagger"
+        }
+    }
+    sourceSets {
+        java.java.srcDir 'src/javaCommon/java'
+        kotlin.java.srcDir 'src/kotlinCommon/java'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+}
+
+dependencies {
+    implementation deps.kotlin.stdlib
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.constraint_layout
+
+    implementation deps.room.runtime
+    implementation deps.room.rxjava2
+
+    implementation deps.rx_java2.rx_java
+    implementation deps.rx_java2.rx_android
+    implementation deps.rx_java2.rx_kotlin
+
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.java8
+
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+
+    implementation deps.glide.glide
+
+    kapt deps.dagger.android_support_compiler
+    kapt deps.dagger.compiler
+    kapt deps.room.compiler
+    kapt deps.lifecycle.compiler
+    kapt deps.glide.compiler
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test:runner:1.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    })
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.1", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    })
+}

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RoomSample</string>
+    <string name="initializing_data">Initializing Data&#8230;</string>
+    <string name="initializing_complete">Sample Data Initialized</string>
+    <string name="enter_username">Enter A Username</string>
+    <string name="continue_to_feed">Continue</string>
+    <string name="comment_count">%1$d comments</string>
+    <string name="like_count">%1$d likes</string>
+</resources>
