@@ -81,18 +81,21 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         //l.setTextSize(50);
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(true);
         //l.setTypeface(tfLight);
         l.setYOffset(0f);
+        l.setXOffset(10f);
+        l.setXOffset(0f);
         l.setXOffset(20f);
         l.setYEntrySpace(20f);
+        l.setXEntrySpace(20f);
         l.setTextSize(30f);
-        l.setFormSize(40f);
+        l.setFormSize(30f);
 
         XAxis xAxis = chart.getXAxis();
         //xAxis.setTypeface(null);
-        xAxis.setGranularity(1f);
+        xAxis.setGranularity(3f);
         xAxis.setCenterAxisLabels(true);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
         leftAxis.setEnabled(false);
+
 
         chart.getAxisRight().setEnabled(false);
     }
@@ -131,10 +135,15 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         float randomMultiplier = seekBarY.getProgress() * 100000f;
 
-        for (int i = startYear; i < endYear; i++) {
-            values1.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
-            values2.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
+        double[] dataimsi_1 = new double[] {76.5, 600.8, 500.12, 400.30, 600.1, 512.43, 711.32};
+        double[] dataimsi_2 = new double[] {61.4, 720.4, 430.5, 640.50, 750.12, 460.11, 770.20};
+
+        for (int i = 0; i < 7; i++) {
+
+           values1.add(new BarEntry(i, (float) dataimsi_1[i] * 1));
+           values2.add(new BarEntry(i, (float) dataimsi_2[i] * 1));
         }
+
 
         BarDataSet set1, set2, set3, set4;
 
@@ -150,18 +159,19 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         } else {
             // create 4 DataSets
             set1 = new BarDataSet(values1, "우리집");
-            set1.setColor(Color.rgb(104, 241, 175));
+            set1.setColor(Color.rgb(107, 210, 255));
+
             set2 = new BarDataSet(values2, "동평균");
-            set2.setColor(Color.rgb(164, 228, 251));
+            set2.setColor(Color.rgb(110, 121, 143));
 
             //BarData data = new BarData(set1, set2, set3, set4);
             BarData data = new BarData(set1, set2);
             String[] values = new String[] { "전기", "수도", "가스", "온수", "난"};
-            // LargeValueFormatter largeValueFormatter = new LargeValueFormatter();
-            //String[] suffixkw = {"kw"};
-            //largeValueFormatter.setSuffix(suffixkw);
+            LargeValueFormatter largeValueFormatter = new LargeValueFormatter();
+            String[] suffix ={"", "", "", "", ""};
+            largeValueFormatter.setSuffix(suffix);
             data.setValueFormatter(new LargeValueFormatter());
-           // data.setValueTypeface(tfLight);
+            //data.setValueTypeface(tfLight);
 
 
             chart.setData(data);
@@ -172,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         // restrict the x-axis range
         chart.getXAxis().setAxisMinimum(startYear);
+
 
         // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
         chart.getXAxis().setAxisMaximum(startYear + chart.getBarData().getGroupWidth(groupSpace, barSpace) * groupCount);

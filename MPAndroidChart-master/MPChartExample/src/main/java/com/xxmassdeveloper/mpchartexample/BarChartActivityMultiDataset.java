@@ -80,7 +80,7 @@ public class BarChartActivityMultiDataset extends DemoBase implements OnSeekBarC
         mv.setChartView(chart); // For bounds control
         chart.setMarker(mv); // Set the marker to the chart
 
-        seekBarX.setProgress(4);
+        seekBarX.setProgress(5);
         seekBarY.setProgress(100);
 
         Legend l = chart.getLegend();
@@ -161,9 +161,9 @@ public class BarChartActivityMultiDataset extends DemoBase implements OnSeekBarC
             //BarData data = new BarData(set1, set2, set3, set4);
             BarData data = new BarData(set1, set2);
             String[] values = new String[] { "전기", "수도", "가스", "온수", "난"};
-           // LargeValueFormatter largeValueFormatter = new LargeValueFormatter();
-            //String[] suffixkw = {"kw"};
-            //largeValueFormatter.setSuffix(suffixkw);
+            LargeValueFormatter largeValueFormatter = new LargeValueFormatter();
+            String[] suffix ={"", "", "", "", ""};
+            largeValueFormatter.setSuffix(suffix);
             data.setValueFormatter(new LargeValueFormatter());
             data.setValueTypeface(tfLight);
 
