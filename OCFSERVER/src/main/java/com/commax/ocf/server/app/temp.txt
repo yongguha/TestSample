@@ -1,0 +1,100 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private void RegisterGaslock(){
+
+        Intent intent = new Intent();
+        intent.setClassName("com.commax.ocf.gaslocksvr","com.commax.ocf.gaslocksvr.GaslockService");
+        myOCFServer.bindService(intent, GaslockCon, BIND_AUTO_CREATE);
+
+
+    }
+
+
+    ServiceConnection GaslockCon = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            //mServiceMessenger.add(new Messenger(service));
+            messengerStringMap.put("Gaslock", new Messenger(service));
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            messengerStringMap.remove("Gaslock");
+        }
+    };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void RegisterGasleak(){
+
+        Intent intent = new Intent();
+        intent.setClassName("com.commax.ocf.gasleak","com.commax.ocf.gasleak.GasleakService");
+        myOCFServer.bindService(intent, GasleakCon, BIND_AUTO_CREATE);
+
+    }
+
+
+    ServiceConnection GasleakCon = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            //mServiceMessenger.add(new Messenger(service));
+            messengerStringMap.put("Gasleak", new Messenger(service));
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            messengerStringMap.remove("Gasleak");
+        }
+    };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    private void RegisterDoorlock(){
+
+        Intent intent = new Intent();
+        intent.setClassName("com.commax.ocf.doorlock","com.commax.ocf.doorlcok.DoorlockService");
+        myOCFServer.bindService(intent, DoorlockCon, BIND_AUTO_CREATE);
+
+    }
+
+
+    ServiceConnection DoorlockCon = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            //mServiceMessenger.add(new Messenger(service));
+            messengerStringMap.put("Doorlock", new Messenger(service));
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            messengerStringMap.remove("Doorlock");
+        }
+    };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    private void RegisterMagnetic(){
+
+        Intent intent = new Intent();
+        intent.setClassName("com.commax.ocf.magneticsvr","com.commax.ocf.magneticsvr.MagneticsvrService");
+        myOCFServer.bindService(intent, MagneticCon, BIND_AUTO_CREATE);
+
+    }
+
+
+    ServiceConnection MagneticCon = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            //mServiceMessenger.add(new Messenger(service));
+            messengerStringMap.put("MagneticCon", new Messenger(service));
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            messengerStringMap.remove("MagneticCon");
+        }
+    };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

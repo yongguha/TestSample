@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_margin="3dp"
+        card_view:cardCornerRadius="0dp"
+        card_view:cardElevation="0dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/image"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:textSize="30sp"
+        android:textColor="#060606"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+<!--
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_margin="3dp"
+        card_view:cardCornerRadius="0dp"
+        card_view:cardElevation="0dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/image"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:textSize="30sp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+-->
+</LinearLayout>

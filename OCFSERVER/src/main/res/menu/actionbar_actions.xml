@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/all_check"
+        android:title="전체 체크/해제"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_all_register"
+        android:icon="@drawable/connect"
+        android:title="등록"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_all_release"
+        android:icon="@drawable/release"
+        android:title="해지"
+        app:showAsAction="never"/>
+</menu>

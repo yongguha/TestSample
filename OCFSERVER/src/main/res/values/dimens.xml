@@ -1,0 +1,47 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="consoletextsize">30sp</dimen>
+
+    <dimen name="pw_btn_close_layout_height">88dp</dimen>
+    <dimen name="pw_btn_close_layout_marginLeft">24dp</dimen>
+    <dimen name="pw_btn_close_layout_marginTop">14dp</dimen>
+    <dimen name="pw_btn_close_img_width">36dp</dimen>
+    <dimen name="pw_btn_close_img_height">36dp</dimen>
+
+    <dimen name="pw_keypad_layout_paddingLeft">185dp</dimen>
+    <dimen name="pw_keypad_layout_paddingRight">92dp</dimen>
+    <dimen name="pw_keypad_img_width">70dp</dimen>
+    <dimen name="pw_keypad_img_height">70dp</dimen>
+    <dimen name="pw_keypad_img_layout_marginBottom">8dp</dimen>
+    <dimen name="pw_keypad_img_layout_marginLeft">20dp</dimen>
+    <dimen name="pw_keypad_textSize">34sp</dimen>
+
+    <dimen name="pw_input_layout_width">423dp</dimen>
+    <dimen name="pw_input_layout_layout_marginTop">41dp</dimen>
+    <dimen name="pw_input_layout_paddingRight">119dp</dimen>
+    <dimen name="pw_input_text_layout_marginTop">40dp</dimen>
+    <dimen name="pw_input_string_textSize">26sp</dimen>
+
+    <dimen name="pw_input_password_layout_width">224dp</dimen>
+    <dimen name="pw_input_password_layout_marginTop">34dp</dimen>
+    <dimen name="pw_input_password_text_marginLeft">16dp</dimen>
+    <dimen name="pw_input_password_text_marginRight">16dp</dimen>
+    <dimen name="pw_input_password_text_width">44dp</dimen>
+    <dimen name="pw_input_password_text_height">50dp</dimen>
+    <dimen name="pw_input_password_text_marginTop">48dp</dimen>
+    <dimen name="pw_input_password_underline_height">2dp</dimen>
+    <dimen name="pw_input_password_dot_size">10dp</dimen>
+    <dimen name="pw_input_password_textSize">34sp</dimen>
+
+    <dimen name="pw_btn_ok_width">148dp</dimen>
+    <dimen name="pw_btn_ok_height">52dp</dimen>
+    <dimen name="pw_btn_ok_textSize">22sp</dimen>
+    <dimen name="pw_btn_ok_layout_marginTop">40dp</dimen>
+
+    <dimen name="pw_toast_width">584dp</dimen>
+    <dimen name="pw_toast_height">61dp</dimen>
+    <dimen name="pw_toast_textSize">20sp</dimen>
+</resources>
