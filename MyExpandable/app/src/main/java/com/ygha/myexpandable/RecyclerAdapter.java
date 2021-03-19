@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,13 +27,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     // 직전에 클릭됐던 Item의 position
     private int prePosition = -1;
 
+    View view;
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater를 이용하여 전 단계에서 만들었던 item.xml을 inflate 시킵니다.
         // return 인자는 ViewHolder 입니다.
         context = parent.getContext();
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new ItemViewHolder(view);
     }
 
@@ -61,6 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         private TextView txtDate;
         private TextView txtContent;
         private ImageView imgArrow;
+        ScrollView scrollView;
         private Group contentGroup;
         private Data data;
         View expandableView;
@@ -75,6 +78,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
             imgArrow  = itemView.findViewById(R.id.image_arrow);
             contentGroup = itemView.findViewById(R.id.group2);
             expandableView = itemView.findViewById(R.id.view3);
+            scrollView = itemView.findViewById(R.id.scrollView);
         }
 
         void onBind(Data data, int position) {
@@ -103,6 +107,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     // 클릭된 position 저장
                     prePosition = position;
                 }
+
             });
 
             changeVisibility(selectedItems.get(position));
