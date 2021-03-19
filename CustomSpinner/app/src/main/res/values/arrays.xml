@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fruid">
+        <item>사과</item>
+        <item>오렌지</item>
+        <item>자몽</item>
+        <item>포도</item>
+        <item>아보카도</item>
+        <item>바나나</item>
+        <item>체리</item>
+    </string-array>
+
+</resources>
