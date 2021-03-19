@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -56,39 +57,63 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     // 여기서 subView를 setting 해줍니다.
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView textView1;
-        private ImageView imageView1;
-        private ImageView imageView2;
+        private TextView txtTitle;
+        private TextView txtDate;
+        private TextView txtContent;
+        private ImageView imgArrow;
+        private Group contentGroup;
         private Data data;
+        View expandableView;
         private int position;
 
         ItemViewHolder(View itemView) {
             super(itemView);
 
-            textView1 = itemView.findViewById(R.id.textView1);
-            imageView1 = itemView.findViewById(R.id.imageView1);
-            imageView2 = itemView.findViewById(R.id.imageView2);
+            txtTitle = itemView.findViewById(R.id.txt_title);
+            txtDate = itemView.findViewById(R.id.txt_date);
+            txtContent = itemView.findViewById(R.id.txt_content);
+            imgArrow  = itemView.findViewById(R.id.image_arrow);
+            contentGroup = itemView.findViewById(R.id.group2);
+            expandableView = itemView.findViewById(R.id.view3);
         }
 
         void onBind(Data data, int position) {
             this.data = data;
             this.position = position;
 
-            textView1.setText(data.getTitle());
-            imageView1.setImageResource(data.getResId());
-            imageView2.setImageResource(data.getResId());
+            txtTitle.setText(data.getTitle());
+            txtDate.setText(data.getDate());
+            txtContent.setText(data.getContent());
+
+            imgArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (selectedItems.get(position)) {
+                        // 펼쳐진 Item을 클릭 시
+                        selectedItems.delete(position);
+                    } else {
+                        // 직전의 클릭됐던 Item의 클릭상태를 지움
+                        selectedItems.delete(prePosition);
+                        // 클릭한 Item의 position을 저장
+                        selectedItems.put(position, true);
+                    }
+                    // 해당 포지션의 변화를 알림
+                    if (prePosition != -1) notifyItemChanged(prePosition);
+                    notifyItemChanged(position);
+                    // 클릭된 position 저장
+                    prePosition = position;
+                }
+            });
 
             changeVisibility(selectedItems.get(position));
+            //changeVisibility(false);
 
-            itemView.setOnClickListener(this);
-            textView1.setOnClickListener(this);
-            imageView1.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.linearItem:
+                case R.id.image_arrow:
                     if (selectedItems.get(position)) {
                         // 펼쳐진 Item을 클릭 시
                         selectedItems.delete(position);
@@ -104,12 +129,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     // 클릭된 position 저장
                     prePosition = position;
                     break;
-                case R.id.textView1:
-                    Toast.makeText(context, data.getTitle(), Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.imageView2:
-                    Toast.makeText(context, data.getTitle() + " 이미지 입니다.", Toast.LENGTH_SHORT).show();
-                    break;
+
             }
         }
 
@@ -118,6 +138,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
          * @param isExpanded Item을 펼칠 것인지 여부
          */
         private void changeVisibility(final boolean isExpanded) {
+
             // height 값을 dp로 지정해서 넣고싶으면 아래 소스를 이용
             int dpValue = 150;
             float d = context.getResources().getDisplayMetrics().density;
@@ -133,10 +154,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     // value는 height 값
                     int value = (int) animation.getAnimatedValue();
                     // imageView의 높이 변경
-                    imageView2.getLayoutParams().height = value;
-                    imageView2.requestLayout();
+                    contentGroup.getLayoutParams().height = value;
+                    contentGroup.requestLayout();
                     // imageView가 실제로 사라지게하는 부분
-                    imageView2.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    contentGroup.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
                 }
             });
             // Animation start

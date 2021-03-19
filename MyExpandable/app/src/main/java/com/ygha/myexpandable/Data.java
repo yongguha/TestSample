@@ -3,7 +3,7 @@ package com.ygha.myexpandable;
 public class Data {
     private String title;
     private String content;
-    private int resId;
+    private String date;
 
     public String getTitle() {
         return title;
@@ -21,11 +21,11 @@ public class Data {
         this.content = content;
     }
 
-    public int getResId() {
-        return resId;
+    public String getDate() {
+        return date;
     }
 
-    public void setResId(int resId) {
-        this.resId = resId;
+    public void setDate(String date) {
+        this.date = date;
     }
 }
